@@ -1,0 +1,60 @@
+Cài đặt :
+#include <iostream>
+using namespace std;
+ 
+bool isEven(int n);
+bool isOdd(int n);
+ 
+bool isEven(int n){
+  if(n == 0)
+    return true;
+  else
+    return isOdd(n - 1);
+}
+ 
+bool isOdd(int n){
+  return !isEven(n);
+}
+int main() {
+  int n = 5;
+  bool kq = isEven(n);
+  if(kq == true)
+    cout<<n<<" là số chẵn";
+  else 
+    cout<<n<<" là số lẻ";
+ 
+  cout<<"\n---------------------------\n";
+
+}
+Ví dụ :
+#include <conio.h>
+#include <stdio.h>
+/*De quy tuong ho*/
+/*X(0)=1, Y(0)=1
+  X(n) = X(n-1)+Y(n-1)
+  Y(n) = X(n-1)*Y(n-1)
+*/
+long int Y(int n);
+long int X(int n) {
+   if(n==0)
+      return 1;
+   else
+      return X(n-1) + Y(n-1);      
+}
+long int Y(int n) {
+   if(n==0)
+      return 1;
+   else
+      return X(n-1)*Y(n-1);      
+}
+/*Chuong trinh chinh*/
+void main(){
+   clrscr();
+   int n;
+   printf("Nhap n = ");
+   scanf("%d",&n);
+   printf("X(%d) = %d",n,X(n));
+   printf("\nY(%d) = %d",n,Y(n));
+   getch();
+}
+
